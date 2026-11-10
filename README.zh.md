@@ -125,7 +125,7 @@ Galaxy Atelier 是一款自托管的图像工作区，也提供围绕工作区�
 - 每个会话最多排队 12 个请求；可编辑排队提示词或是否使用提示词模型，也可删除项目，或将项目移回输入区修改尺寸与参考图。服务重启后队列仍会保留。
 - 如果提示词模型返回了图像名称，完成的图像会使用描述性文件名；工作台会记录服务端返回的实际尺寸。
 
-**预览：**[云海温室](#preview-greenhouse) · [东京唱片店](#preview-tokyo) · [灯塔海报](#preview-lighthouse) · [运行中的图像工作台](#preview-workbench)
+**预览：**[云海温室](#preview-greenhouse) · [东京唱片店](#preview-tokyo) · [灯塔海报](#preview-lighthouse) · [图像工作台](#preview-studio)
 
 <a id="image-guided-editing"></a>
 ### 编辑或参考图像
@@ -143,7 +143,7 @@ Galaxy Atelier 是一款自托管的图像工作区，也提供围绕工作区�
 - 跟进编辑会要求提示词模型保留用户未要求修改的画面属性；参考模式则只将用户指定的图像特征作为创作依据。
 - 参考图片大小上限为 10 MiB，并会检查实际内容和图像尺寸；排队等待中的图像数据会加密保存。
 
-**预览：**上方画廊展示生成结果示例。[工作台截图](#preview-workbench)展示对话与完成图像的界面，但不是编辑前后对比图。
+**预览：**上方画廊展示生成结果示例；[全宽工作台截图](#preview-studio)展示应用界面，不是编辑前后对比图。
 
 <a id="workspace-operations"></a>
 ### 运行自托管工作区
@@ -162,7 +162,7 @@ Galaxy Atelier 是一款自托管的图像工作区，也提供围绕工作区�
 - 筛选、导出和删除审计日志。日志不保存 API 密钥和完整提示词。
 - 界面支持中文和英文、自动识别浏览器语言，并提供九套命名主题（4 套浅色、5 套深色）及跟随系统选项。
 
-**预览：**查看[运行中的图像工作台](#preview-workbench)，了解生成对话界面。
+**预览：**查看[图像工作台](#preview-studio)、[运营概览](#preview-overview)、[账号管理](#preview-accounts)和[个人用量](#preview-usage)。
 
 <a id="interface-preferences"></a>
 ### 界面偏好
@@ -184,12 +184,7 @@ Galaxy Atelier 是一款自托管的图像工作区，也提供围绕工作区�
 
 ## 生成示例
 
-以下示例由 Galaxy Atelier 调用已配置的图像 API 生成，用于展示工作流的输出；上方截图展示的是应用本身。画廊使用压缩后的 JPEG 预览，图注标注生成 PNG 的原始尺寸。
-
-<p align="center">
-  <a id="preview-workbench" href="#图像工作流"><img src="docs/assets/workbench-greenhouse-result.jpg" alt="Galaxy Atelier 图像工作台中展示已完成的温室生成结果和对话输入区" width="70%"></a>
-</p>
-<p align="center"><strong>展示已完成生成的图像工作台</strong><br>应用运行时截取的界面。</p>
+以下示例由 Galaxy Atelier 调用已配置的图像 API 生成，用于展示工作流的输出；上方全宽截图展示的是应用本身。画廊使用压缩后的 JPEG 预览，图注标注生成 PNG 的原始尺寸。
 
 <table>
   <tr>

@@ -180,12 +180,7 @@ The prompt model is not a source of hidden tool access. The application does not
 
 ## Generated Examples
 
-The following examples were generated through a configured image API. They illustrate the output of the workflow; the screenshots above show the application itself. Gallery images are optimized JPEG previews, and captions show the original generated PNG dimensions.
-
-<p align="center">
-  <a id="preview-workbench" href="#image-workflow"><img src="docs/assets/workbench-greenhouse-result.jpg" alt="Galaxy Atelier image studio showing a completed greenhouse generation and the conversation composer" width="70%"></a>
-</p>
-<p align="center"><strong>Image Studio with a completed generation</strong><br>A screenshot captured from the running application.</p>
+The following examples were generated through a configured image API. They illustrate the output of the workflow; the full-width screenshots above show the application itself. Gallery images are optimized JPEG previews, and captions show the original generated PNG dimensions.
 
 <table>
   <tr>
