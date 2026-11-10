@@ -5,8 +5,8 @@
   <p><strong>A self-hosted image studio for turning natural-language conversations into images.</strong></p>
   <p>
     <a href="README.zh.md">简体中文</a> ·
-    <a href="#product-highlights">Overview</a> ·
-    <a href="#showcase">Showcase</a> ·
+    <a href="#workspace-overview">Overview</a> ·
+    <a href="#screenshots">Screenshots</a> ·
     <a href="#getting-started">Getting started</a> ·
     <a href="#ubuntu-deployment">Ubuntu deployment</a>
   </p>
@@ -18,19 +18,19 @@
   </p>
 </div>
 
-Galaxy Atelier is a small, self-hosted web workspace for image creation. Describe a scene in a conversational composer, optionally refine the prompt with a language model, and send the resulting request to an image API that you configure. Sessions, generated images, usage records, and administration live on your own server.
+Galaxy Atelier is a self-hosted web workspace for running provider-backed image sessions and administering the service around them. Operators provision accounts and choose the prompt and image APIs; members work in account-scoped sessions with image context, request queues, and visible model feedback. Usage and operational records stay available to the people who run the workspace.
 
-It is designed around one deliberately narrow job: turn a user's creative request into an image. It is not a general-purpose computer agent.
+The application is deliberately limited to this workflow. Its prompt model does not receive tools for controlling the host computer.
 
-**Category:** Self-hosted, conversational image-generation workspace<br>
-**Best for:** Individuals and small groups who want to choose their own compatible model APIs and keep workspace data on infrastructure they manage.
+**Category:** Self-hosted image-workspace and service administration<br>
+**Best for:** Individuals and small teams who want to manage accounts, choose compatible model APIs, and review their workspace activity on infrastructure they operate.
 
 ## Contents
 
-- [Product Highlights](#product-highlights)
-- [Showcase](#showcase)
-- [Detailed Workflows](#detailed-workflows)
-- [How Generation Works](#how-generation-works)
+- [Workspace Overview](#workspace-overview)
+- [Feature Guide](#feature-guide)
+- [Image Workflow](#image-workflow)
+- [Generated Examples](#generated-examples)
 - [Architecture](#architecture)
 - [Security and Data Boundaries](#security-and-data-boundaries)
 - [Requirements](#requirements)
@@ -42,106 +42,132 @@ It is designed around one deliberately narrow job: turn a user's creative reques
 - [Repository Layout](#repository-layout)
 - [Limitations](#limitations)
 
-## Product Highlights
+## Workspace Overview
 
-| Workflow | Best for | What Galaxy Atelier provides |
-| --- | --- | --- |
-| **[Create from conversation](#conversation-to-image)** | Starting with an idea rather than a finished image prompt | An optional prompt-model switch, model-selected or preset canvas sizes, first-turn session naming, and a persistent per-session request queue. |
-| **[Edit or reference an image](#image-guided-editing)** | Making targeted changes or using a visual reference | Drag-and-drop image uploads, format normalization, explicit edit or reference modes, and multimodal image context when prompt refinement is enabled. |
-| **[Run a self-hosted workspace](#workspace-operations)** | Managing an image service for multiple accounts | Administrator-managed users and provider settings, account-scoped sessions and usage, operational traffic views, and exportable audit logs. |
+| Area | What it provides |
+| --- | --- |
+| **Workspace and accounts** | Administrator-provisioned accounts, account-scoped sessions and usage, searchable session history, archive/restore, and deletion controls. |
+| **Provider administration** | Separate prompt and image API settings, editable base URLs and model IDs, model-list discovery, and configurable usage pricing. |
+| **Operational visibility** | Member usage summaries, administrator traffic analytics across four time ranges, model/account breakdowns, and filterable CSV-exportable audit logs. |
+| **Daily workflow** | A conversational image studio with optional prompt refinement, edit/reference modes, image uploads, model-selected sizing, and persistent per-session queues. |
 
-The interface also supports English and Simplified Chinese, automatic browser-language selection, nine named themes (four light and five dark), and a system-following option.
+The interface also supports English and Simplified Chinese, browser-language detection, nine named themes (four light and five dark), and a system-following appearance option.
 
-For a capability-by-capability register, source evidence, and notes on what belongs in the product story, see the [feature inventory](docs/FEATURE_INVENTORY.md).
+For the complete capability register, code evidence, and the editorial decisions behind this README, see the [feature inventory](docs/FEATURE_INVENTORY.md).
 
-## Showcase
+<a id="screenshots"></a>
+## Screenshots
 
-The interface screenshot below was captured from the running application. The artworks in the gallery were generated in Galaxy Atelier with the configured image API. You can choose a size preset or let the provider decide; the application records the actual dimensions returned for each image. Gallery previews are optimized JPEGs, while the captions show the dimensions of the generated PNGs.
+These screenshots were captured from the running application using synthetic demonstration data. They show the workspace and its day-to-day administration rather than using generated art as the product's main presentation.
 
-<p align="center">
-  <a id="preview-workbench" href="#conversation-to-image"><img src="docs/assets/workbench-greenhouse-result.jpg" alt="Galaxy Atelier's image studio showing a completed greenhouse generation and the conversation composer" width="60%"></a>
-</p>
-<p align="center"><strong>The Image Studio</strong><br>A screenshot captured from the running application with a completed generation.</p>
+### Workspace and conversations
+
+<p align="center"><a id="preview-studio" href="#image-workflow"><img src="docs/assets/ui-studio.png" alt="The Galaxy Atelier workspace with session navigation, image prompt controls, and the conversation composer" width="100%"></a></p>
+<p align="center"><strong>Image Studio</strong><br>Create sessions, choose prompt-model and canvas options, and keep the conversation workflow in one workspace.</p>
+
+### Administration and usage
 
 <table>
   <tr>
     <td width="50%" valign="top">
-      <a id="preview-greenhouse" href="#conversation-to-image"><img src="docs/assets/greenhouse-over-clouds.jpg" alt="A glass botanical greenhouse floating above clouds at sunrise" width="100%"></a>
-      <p align="center"><strong>Skyborne Botanical Greenhouse</strong><br>3344 × 1882 · Generated image</p>
+      <a id="preview-overview" href="#workspace-operations"><img src="docs/assets/ui-overview.png" alt="Administrator overview with traffic metrics, time-range controls, and usage chart" width="100%"></a>
+      <p align="center"><strong>Operations overview</strong><br>Traffic, success, usage, estimated cost, and period-by-period detail.</p>
     </td>
     <td width="50%" valign="top">
-      <a id="preview-tokyo" href="#conversation-to-image"><img src="docs/assets/tokyo-vinyl-shop-rain.jpg" alt="A warmly lit Tokyo vinyl record shop on a rainy night" width="100%"></a>
-      <p align="center"><strong>Rainy Night Tokyo Record Shop</strong><br>2804 × 2244 · Generated image</p>
+      <a id="preview-accounts" href="#workspace-operations"><img src="docs/assets/ui-accounts.png" alt="Administrator account management with account creation and role controls" width="100%"></a>
+      <p align="center"><strong>Account management</strong><br>Create accounts, assign roles, reset passwords, and manage access.</p>
     </td>
   </tr>
   <tr>
-    <td colspan="2" align="center" valign="top">
-      <a id="preview-lighthouse" href="#conversation-to-image"><img src="docs/assets/coastal-lighthouse-screen-print.jpg" alt="A vintage screen-print travel poster featuring a coastal lighthouse" width="50%"></a>
-      <p align="center"><strong>Coastal Lighthouse Screen Print</strong><br>2048 × 3072 · Model-selected portrait canvas</p>
+    <td width="50%" valign="top">
+      <a id="preview-usage" href="#workspace-operations"><img src="docs/assets/ui-account-usage.png" alt="Member usage report with request totals, token counts, and model breakdown" width="100%"></a>
+      <p align="center"><strong>Member usage</strong><br>Each account can inspect its own requests, model usage, and estimated cost.</p>
+    </td>
+    <td width="50%" valign="top">
+      <a id="preview-audit" href="#workspace-operations"><img src="docs/assets/ui-audit.png" alt="Filtered operational audit log with export controls" width="100%"></a>
+      <p align="center"><strong>Audit logs</strong><br>Filter operational events, inspect metadata, and export matching records as CSV.</p>
     </td>
   </tr>
 </table>
 
-The project ships with an [image-generation prompt guide](AGENT.md). It constrains the language model to prepare prompts only; the server remains responsible for authentication, provider calls, storage, and image delivery.
+### Interface preferences
 
-## Detailed Workflows
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a id="preview-themes" href="#interface-preferences"><img src="docs/assets/ui-themes.png" alt="Theme selector showing nine color palettes and system appearance" width="100%"></a>
+      <p align="center"><strong>Nine named themes</strong><br>Four light palettes, five dark palettes, and an option to follow the operating system.</p>
+    </td>
+    <td width="50%" valign="top">
+      <a id="preview-language" href="#interface-preferences"><img src="docs/assets/ui-language.png" alt="Language selector with English and Chinese options" width="100%"></a>
+      <p align="center"><strong>Two interface languages</strong><br>Choose English or Simplified Chinese, or let the browser language be detected automatically.</p>
+    </td>
+  </tr>
+</table>
+
+## Feature Guide
 
 <a id="conversation-to-image"></a>
-### Create from Conversation
+### Image Sessions and Requests
 
-**Category:** Conversational image-generation workspace<br>
-**Best for:** Turning a visual idea into an image without having to write a provider-specific prompt by hand.
+**Category:** Session-based creative workflow<br>
+**Best for:** Keeping requests, outputs, model feedback, and follow-up edits organized by session.
 
-**Overview:** Describe the scene in the studio and optionally let the configured prompt model turn it into an English image prompt. The conversation, visible model response, generation status, and resulting image stay together in a session.
+**Overview:** Members describe an image in the studio and can optionally use the configured prompt model to refine the request. The conversation, generation status, returned feedback, and resulting image stay together in a session. The prompt model can be skipped for direct requests to the image API.
 
 **Highlights:**
 
-- Enable or skip prompt refinement for each request. When enabled, the prompt model can use the previous successful turn's text prompt pair and an attached image; on a new session's first request it can also suggest a session title and an image name.
-- Expand the refined prompt and review the workflow summary, model details, and available model feedback, including feedback from failed requests. The interface does not expose hidden chain-of-thought or a serialized API request body.
-- Choose square, portrait, landscape, or model-selected sizing. For direct text-to-image requests without a reference image, model-selected sizing falls back to the landscape preset.
-- Queue up to 12 requests per session, edit a queued prompt or prompt-model choice, remove an item, or move it back to the composer to change its size or reference image. The queue persists across service restarts.
-- Completed images receive descriptive filenames when the prompt model returns a title, and the studio records the actual output dimensions.
+- Search, rename, archive, restore, or delete sessions. Conversation history can be paged without losing the current scroll position.
+- Queue up to 12 requests in a session. Edit a queued prompt, remove it, or return it to the composer to adjust its options. The queue persists across service restarts.
+- Expand the refined prompt and workflow summary to review model details and available provider feedback. Failed requests also retain available text feedback.
+- On a new session's first request, the prompt model may suggest a session title and a descriptive image name.
+- Review the resulting image, actual model and dimensions, available text feedback, and reported usage or estimated cost. Enlarge or download an image, or continue with it as an edit.
 
-**Preview:** [Greenhouse](#preview-greenhouse) · [Tokyo record shop](#preview-tokyo) · [Lighthouse poster](#preview-lighthouse) · [Running image studio](#preview-workbench)
+**Preview:** [Image Studio screenshot](#preview-studio)
 
 <a id="image-guided-editing"></a>
-### Edit or Reference an Image
+### Image Context and Canvas Controls
 
-**Category:** Image-guided creation and targeted editing<br>
-**Best for:** Preserving an existing composition while changing selected details, or using an image to guide a new generation.
+**Category:** Image-guided generation and editing<br>
+**Best for:** Making targeted changes to an existing image or using one as a visual reference.
 
-**Overview:** Attach an image and choose whether it is an edit target or a visual reference. These modes are kept distinct in the prompt-model instructions and the image-provider request.
+**Overview:** Add an image and choose whether it is the edit target or a visual reference. These modes have different intent and are passed distinctly through prompt preparation and image-provider requests.
 
 **Highlights:**
 
-- Add an image with the picker or drag and drop. The client detects image signatures, decodes browser-supported formats, and normalizes the upload to PNG before submission.
-- The prompt model receives an attached image as multimodal input when prompt refinement is enabled; the most recent successful prompt-refined turn's user prompt and refined prompt can also be included. The image is sent to the configured image API for the selected edit or reference workflow.
-- When prompt refinement is enabled and no new image is attached, a follow-up request can reuse the image from the most recent successful prompt-refined turn in that session as its edit target. With prompt refinement skipped, attach the image explicitly.
-- Follow-up edit instructions ask the prompt model to preserve visual attributes the user did not request to change. Reference mode instead asks it to use only the named attributes as guidance.
-- Reference uploads are limited to 10 MiB and checked for valid content and dimensions; queued image data is encrypted while waiting.
+- Choose, drag, or paste an image. Browser-supported inputs are checked and normalized to PNG before submission.
+- When prompt refinement is enabled, an attached image can be included as multimodal input to the prompt provider and forwarded to the image provider.
+- A follow-up without a new image can reuse the latest successful prompt-refined turn's image as an edit target. When prompt refinement is skipped, attach the image explicitly.
+- Choose model-decided, square, portrait, or landscape sizing when the request allows it. The application records the actual returned dimensions.
 
-**Preview:** The image gallery above shows representative generated outputs. The [studio screenshot](#preview-workbench) shows the conversation and completed-image view; it is not an edit-before/after comparison.
+**Preview:** [Image Studio screenshot](#preview-studio)
 
 <a id="workspace-operations"></a>
-### Run a Self-Hosted Workspace
+### Accounts, Providers, and Operations
 
-**Category:** Private, administrator-managed image service<br>
-**Best for:** Individuals or small teams that want account-scoped workspaces and control over compatible model endpoints.
+**Category:** Self-hosted service administration<br>
+**Best for:** Operators who want to manage accounts and model providers from the same application.
 
-**Overview:** Galaxy Atelier runs as one Node.js service with a local SQLite database and filesystem-backed image storage. Administrators provision accounts and configure the prompt and image providers; there is no public registration.
+**Overview:** The administrator provisions accounts, configures prompt and image providers, and reviews service activity. Members see only their own sessions and usage. Public registration is not available.
 
 **Highlights:**
 
-- Manage accounts, including creating, disabling, and deleting users. Each account's sessions, images, and usage are isolated from other accounts.
-- Configure API base URLs, credentials, model IDs, and usage prices; fetch available model IDs from a provider and choose from the returned list.
-- Edit the prompt model's system instructions. By default, the project uses the included `AGENT.md` prompt-writing guide.
-- Search, rename, archive, restore, or delete sessions. Users can inspect their own usage; administrators can review traffic by minute, hour, day, or month, with detailed request, model, account, duration, and cost data.
-- Filter, export, and delete audit-log entries. Logs omit API keys and full prompts.
-- Use the interface in English or Simplified Chinese, with browser-language detection, nine named themes (four light and five dark), and a system-following option.
+- Configure separate provider base URLs, credentials, model IDs, and usage prices. Fetch model IDs from a provider and select a returned option.
+- Edit the prompt model's system instructions; an empty custom value restores the bundled `AGENT.md` default.
+- Manage account roles, access status, and password resets. Account sessions and usage are isolated.
+- Review personal usage or administrator traffic by minute, hour, day, and month, with account and model breakdowns.
+- Filter, export, and delete audit-log entries. Logs do not contain raw API keys or full prompts; provider-setting events may include configured base URLs.
 
-**Preview:** See the [running image studio](#preview-workbench) for the generated-image conversation view.
+**Previews:** [Operations overview](#preview-overview) · [Account management](#preview-accounts) · [Member usage](#preview-usage) · [Audit logs](#preview-audit)
 
-## How Generation Works
+<a id="interface-preferences"></a>
+### Interface Preferences
+
+Choose English or Simplified Chinese, with automatic browser-language detection by default. The interface offers nine named color themes and can follow the operating system's light/dark preference.
+
+**Previews:** [Theme selector](#preview-themes) · [Language selector](#preview-language)
+
+## Image Workflow
 
 1. Sign in to an account provisioned by the administrator and open an image session.
 2. Describe the scene. Optionally attach a reference image and select edit or reference mode.
@@ -151,6 +177,34 @@ The project ships with an [image-generation prompt guide](AGENT.md). It constrai
 6. The result, actual image dimensions, provider/model metadata, usage when reported, and generation status appear in the session. Failed requests retain the model's available text response for inspection.
 
 The prompt model is not a source of hidden tool access. The application does not give it a shell, filesystem, browser, plugin, or arbitrary URL-fetching tool.
+
+## Generated Examples
+
+The following examples were generated through a configured image API. They illustrate the output of the workflow; the screenshots above show the application itself. Gallery images are optimized JPEG previews, and captions show the original generated PNG dimensions.
+
+<p align="center">
+  <a id="preview-workbench" href="#image-workflow"><img src="docs/assets/workbench-greenhouse-result.jpg" alt="Galaxy Atelier image studio showing a completed greenhouse generation and the conversation composer" width="70%"></a>
+</p>
+<p align="center"><strong>Image Studio with a completed generation</strong><br>A screenshot captured from the running application.</p>
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a id="preview-greenhouse" href="#image-workflow"><img src="docs/assets/greenhouse-over-clouds.jpg" alt="A glass botanical greenhouse floating above clouds at sunrise" width="100%"></a>
+      <p align="center"><strong>Skyborne Botanical Greenhouse</strong><br>3344 × 1882 · Generated image</p>
+    </td>
+    <td width="50%" valign="top">
+      <a id="preview-tokyo" href="#image-workflow"><img src="docs/assets/tokyo-vinyl-shop-rain.jpg" alt="A warmly lit Tokyo vinyl record shop on a rainy night" width="100%"></a>
+      <p align="center"><strong>Rainy Night Tokyo Record Shop</strong><br>2804 × 2244 · Generated image</p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center" valign="top">
+      <a id="preview-lighthouse" href="#image-workflow"><img src="docs/assets/coastal-lighthouse-screen-print.jpg" alt="A vintage screen-print travel poster featuring a coastal lighthouse" width="50%"></a>
+      <p align="center"><strong>Coastal Lighthouse Screen Print</strong><br>2048 × 3072 · Model-selected portrait canvas</p>
+    </td>
+  </tr>
+</table>
 
 ## Architecture
 

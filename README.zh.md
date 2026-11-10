@@ -5,8 +5,8 @@
   <p><strong>将自然语言对话转化为图像的自托管工作室。</strong></p>
   <p>
     <a href="README.md">English</a> ·
-    <a href="#产品亮点">产品亮点</a> ·
-    <a href="#效果展示">效果展示</a> ·
+    <a href="#工作区概览">工作区概览</a> ·
+    <a href="#界面截图">界面截图</a> ·
     <a href="#快速开始">快速开始</a> ·
     <a href="#ubuntu-部署">Ubuntu 部署</a>
   </p>
@@ -18,19 +18,20 @@
   </p>
 </div>
 
-Galaxy Atelier 是一款轻量的自托管图像创作 Web 工作区。你可以用对话描述画面，选择是否通过语言模型润色提示词，再将请求发送给自己配置的图像 API。会话、生成结果、用量和管理功能都由你自己的服务器承载。
+Galaxy Atelier 是一款自托管的图像工作区，也提供围绕工作区的服务管理功能。管理员创建账号并配置提示词与图像服务；用户在各自隔离的会话中创作、查看图片上下文、管理请求队列并查看可用的模型反馈。用量与运维记录供工作区管理者查看。
 
-项目专注于一件事：把用户的创意请求转化为图像。它不是通用型电脑操控 Agent。
+项目专注于这条工作流。提示词模型不会获得操控主机电脑的工具。
 
-**项目类别：** 自托管的对话式图像生成工作区<br>
-**适用对象：** 希望自行选择兼容模型 API，并将工作区数据保存在自有基础设施上的个人与小型团队。
+**项目类别：** 自托管图像工作区与服务管理<br>
+**适用对象：** 希望管理账号、选择兼容模型 API，并在自有基础设施上查看工作区活动的个人与小型团队。
 
 ## 目录
 
-- [产品亮点](#产品亮点)
-- [效果展示](#效果展示)
-- [详细工作流](#详细工作流)
-- [图像生成流程](#图像生成流程)
+- [工作区概览](#工作区概览)
+- [界面截图](#界面截图)
+- [功能导览](#功能导览)
+- [图像工作流](#图像工作流)
+- [生成示例](#生成示例)
 - [系统架构](#系统架构)
 - [安全与数据边界](#安全与数据边界)
 - [运行要求](#运行要求)
@@ -42,49 +43,71 @@ Galaxy Atelier 是一款轻量的自托管图像创作 Web 工作区。你可以
 - [项目结构](#项目结构)
 - [当前限制](#当前限制)
 
-## 产品亮点
+## 工作区概览
 
-| 工作流 | 适用场景 | Galaxy Atelier 提供的能力 |
-| --- | --- | --- |
-| **[从对话创作](#conversation-to-image)** | 有画面构想，但还没有完整的图像提示词 | 可选的提示词润色模型、预设或模型决定的画布尺寸、首轮会话命名，以及按会话持久保存的请求队列。 |
-| **[编辑或参考图像](#image-guided-editing)** | 定向调整已有画面，或将图片作为视觉参考 | 支持拖放上传图片、格式归一、明确选择编辑或参考模式，并在启用提示词润色时提供多模态图片上下文。 |
-| **[运行自托管工作区](#workspace-operations)** | 为多个账号管理自托管图像服务 | 管理员维护账号与模型服务配置，账号间隔离会话和用量，并提供运营流量视图与可导出的审计日志。 |
+| 区域 | 能力概览 |
+| --- | --- |
+| **工作区与账号** | 管理员创建账号；会话和用量按账号隔离；支持搜索会话历史、归档、恢复和删除。 |
+| **模型服务管理** | 分别配置提示词和图像 API，可编辑服务地址与模型 ID、获取模型列表，并设置用量价格。 |
+| **运营可见性** | 用户可查看个人用量；管理员可按四种时间范围查看流量、账号和模型统计，并筛选、导出审计日志 CSV。 |
+| **日常创作** | 对话式图像工作台，支持可选提示词润色、编辑/参考模式、图片上传、模型决定画布尺寸和按会话保存请求队列。 |
 
-界面支持中文和英文、自动识别浏览器语言，并提供九套命名主题（4 套浅色、5 套深色）及跟随系统选项。
+界面支持中文和英文、自动识别浏览器语言，并提供九套命名主题（4 套浅色、5 套深色）及跟随系统外观选项。
 
 完整功能清单、代码依据以及 README 内容取舍说明见[功能盘点](docs/FEATURE_INVENTORY.md)。
 
-## 效果展示
+## 界面截图
 
-下方的工作台画面截自实际运行的应用；画廊中的作品则由 Galaxy Atelier 调用已配置的图像 API 生成。你可以选择画幅预设，也可以交由服务商决定；应用会记录每张图实际返回的尺寸。画廊展示的是压缩后的 JPEG 预览，图注标注生成 PNG 的原始尺寸。
+以下截图来自实际运行的应用，使用合成演示数据。重点展示工作区和日常管理界面，而不是把生成作品当作产品主视觉。
 
-<p align="center">
-  <a id="preview-workbench" href="#conversation-to-image"><img src="docs/assets/workbench-greenhouse-result.jpg" alt="Galaxy Atelier 图像工作台中展示温室生成结果和对话输入区" width="60%"></a>
-</p>
-<p align="center"><strong>图像工作台</strong><br>应用运行时生成结果页面的实际截图。</p>
+### 工作区与对话
+
+<p align="center"><a id="preview-studio" href="#图像工作流"><img src="docs/assets/ui-studio.png" alt="Galaxy Atelier 图像工作区，展示会话导航、提示词选项和对话输入区" width="100%"></a></p>
+<p align="center"><strong>图像工作台</strong><br>创建会话、选择提示词模型和画布选项，并在同一工作区完成对话式创作。</p>
+
+### 管理与用量
 
 <table>
   <tr>
     <td width="50%" valign="top">
-      <a id="preview-greenhouse" href="#conversation-to-image"><img src="docs/assets/greenhouse-over-clouds.jpg" alt="日出时漂浮在云海上空的玻璃植物温室" width="100%"></a>
-      <p align="center"><strong>云海之上的植物温室</strong><br>3344 × 1882 · 生成图像</p>
+      <a id="preview-overview" href="#workspace-operations"><img src="docs/assets/ui-overview.png" alt="管理员运营概览，包含流量指标、时间范围控制和统计图表" width="100%"></a>
+      <p align="center"><strong>运营概览</strong><br>流量、成功率、用量、预估成本和分时段明细。</p>
     </td>
     <td width="50%" valign="top">
-      <a id="preview-tokyo" href="#conversation-to-image"><img src="docs/assets/tokyo-vinyl-shop-rain.jpg" alt="雨夜东京街边亮着暖光的黑胶唱片店" width="100%"></a>
-      <p align="center"><strong>雨夜东京黑胶唱片店</strong><br>2804 × 2244 · 生成图像</p>
+      <a id="preview-accounts" href="#workspace-operations"><img src="docs/assets/ui-accounts.png" alt="管理员账号管理页面，包含创建账号和角色控制" width="100%"></a>
+      <p align="center"><strong>账号管理</strong><br>创建账号、分配角色、重置密码和管理访问权限。</p>
     </td>
   </tr>
   <tr>
-    <td colspan="2" align="center" valign="top">
-      <a id="preview-lighthouse" href="#conversation-to-image"><img src="docs/assets/coastal-lighthouse-screen-print.jpg" alt="复古丝网印刷风格的海岸灯塔旅行海报" width="50%"></a>
-      <p align="center"><strong>海岸灯塔丝网印刷海报</strong><br>2048 × 3072 · 模型选择竖版画布</p>
+    <td width="50%" valign="top">
+      <a id="preview-usage" href="#workspace-operations"><img src="docs/assets/ui-account-usage.png" alt="用户用量报告，显示请求总数、Token 用量和模型统计" width="100%"></a>
+      <p align="center"><strong>个人用量</strong><br>查看本账号的请求、模型用量和预估成本。</p>
+    </td>
+    <td width="50%" valign="top">
+      <a id="preview-audit" href="#workspace-operations"><img src="docs/assets/ui-audit.png" alt="筛选后的运营审计日志及导出控件" width="100%"></a>
+      <p align="center"><strong>审计日志</strong><br>筛选运维事件、检查元数据，并将匹配记录导出为 CSV。</p>
     </td>
   </tr>
 </table>
 
-项目自带一份[图像提示词编写规范](AGENT.md)，用于约束语言模型只负责整理提示词。身份验证、服务商调用、文件存储和图像交付仍由服务器控制。
+### 界面偏好
 
-## 详细工作流
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a id="preview-themes" href="#interface-preferences"><img src="docs/assets/ui-themes.png" alt="主题选择器，展示九种配色和系统外观选项" width="100%"></a>
+      <p align="center"><strong>九套命名主题</strong><br>4 套浅色、5 套深色，并可跟随操作系统外观。</p>
+    </td>
+    <td width="50%" valign="top">
+      <a id="preview-language" href="#interface-preferences"><img src="docs/assets/ui-language.png" alt="中文和英文界面语言选择器" width="100%"></a>
+      <p align="center"><strong>两种界面语言</strong><br>可选择中文或英文，也可根据浏览器语言自动切换。</p>
+    </td>
+  </tr>
+</table>
+
+项目附带[图像提示词编写规范](AGENT.md)。身份验证、服务商调用、文件存储和图像交付仍由服务器控制。
+
+## 功能导览
 
 <a id="conversation-to-image"></a>
 ### 从对话创作
@@ -141,7 +164,14 @@ Galaxy Atelier 是一款轻量的自托管图像创作 Web 工作区。你可以
 
 **预览：**查看[运行中的图像工作台](#preview-workbench)，了解生成对话界面。
 
-## 图像生成流程
+<a id="interface-preferences"></a>
+### 界面偏好
+
+界面支持中文和英文，默认自动检测浏览器语言。提供九套命名配色主题，并可跟随操作系统的浅色/深色偏好。
+
+**界面预览：**[主题选择器](#preview-themes) · [语言选择器](#preview-language)
+
+## 图像工作流
 
 1. 登录管理员创建的账号，然后新建一个图像会话。
 2. 输入画面描述；需要时上传参考图片，并选择编辑模式或参考模式。
@@ -151,6 +181,34 @@ Galaxy Atelier 是一款轻量的自托管图像创作 Web 工作区。你可以
 6. 生成结果、实际图像尺寸、模型信息、服务商提供的用量数据和任务状态会显示在会话中。生成失败时也会保留模型返回的可用文字反馈。
 
 提示词模型没有隐藏的工具访问能力。应用不会向其提供 Shell、文件系统、浏览器、插件或任意 URL 访问工具。
+
+## 生成示例
+
+以下示例由 Galaxy Atelier 调用已配置的图像 API 生成，用于展示工作流的输出；上方截图展示的是应用本身。画廊使用压缩后的 JPEG 预览，图注标注生成 PNG 的原始尺寸。
+
+<p align="center">
+  <a id="preview-workbench" href="#图像工作流"><img src="docs/assets/workbench-greenhouse-result.jpg" alt="Galaxy Atelier 图像工作台中展示已完成的温室生成结果和对话输入区" width="70%"></a>
+</p>
+<p align="center"><strong>展示已完成生成的图像工作台</strong><br>应用运行时截取的界面。</p>
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a id="preview-greenhouse" href="#图像工作流"><img src="docs/assets/greenhouse-over-clouds.jpg" alt="日出时漂浮在云海上空的玻璃植物温室" width="100%"></a>
+      <p align="center"><strong>云海之上的植物温室</strong><br>3344 × 1882 · 生成图像</p>
+    </td>
+    <td width="50%" valign="top">
+      <a id="preview-tokyo" href="#图像工作流"><img src="docs/assets/tokyo-vinyl-shop-rain.jpg" alt="雨夜东京街边亮着暖光的黑胶唱片店" width="100%"></a>
+      <p align="center"><strong>雨夜东京黑胶唱片店</strong><br>2804 × 2244 · 生成图像</p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center" valign="top">
+      <a id="preview-lighthouse" href="#图像工作流"><img src="docs/assets/coastal-lighthouse-screen-print.jpg" alt="复古丝网印刷风格的海岸灯塔旅行海报" width="50%"></a>
+      <p align="center"><strong>海岸灯塔丝网印刷海报</strong><br>2048 × 3072 · 模型选择竖版画布</p>
+    </td>
+  </tr>
+</table>
 
 ## 系统架构
 
