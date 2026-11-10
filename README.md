@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="docs/assets/galaxy-atelier-promo.jpg" alt="Galaxy Atelier - a self-hosted creative workspace" width="60%">
+  <img src="docs/assets/galaxy-atelier-promo.jpg" alt="Galaxy Atelier - a self-hosted creative workspace">
 
   <h1>Galaxy Atelier</h1>
   <p><strong>A self-hosted workspace for model services, account-separated sessions, and image workflows.</strong></p>
@@ -43,6 +43,8 @@ The application is deliberately limited to this workflow. Its prompt model does 
 - [Limitations](#limitations)
 
 ## Workspace Overview
+<a id="preview-studio" href="docs/assets/ui-studio.png"><img src="docs/assets/ui-studio.png" alt="Image Studio with session navigation, prompt-model toggle, canvas sizing, and composer" width="100%"></a>
+<p align="center"><strong>Image Studio and Prompt Model</strong><br>Session navigation, prompt-model on/off control, canvas sizing, and the conversation composer.</p>
 
 | Area | What it provides |
 | --- | --- |
@@ -63,8 +65,8 @@ The screenshots are full-viewport captures from the running application using sy
 <table>
   <tr>
     <td width="33.33%" valign="top">
-      <a id="preview-studio" href="docs/assets/ui-studio.png"><img src="docs/assets/ui-studio.png" alt="Image Studio with session navigation, prompt-model toggle, canvas sizing, and composer" width="100%"></a>
-      <p align="center"><strong>Image Studio and Prompt Model</strong><br>Session navigation, prompt-model on/off control, canvas sizing, and the conversation composer.</p>
+      <a id="preview-language" href="docs/assets/ui-language.png"><img src="docs/assets/ui-language.png" alt="Language selector with English and Simplified Chinese options" width="100%"></a>
+      <p align="center"><strong>Language selection</strong><br>Choose English or Simplified Chinese, or use automatic browser-language detection.</p>
     </td>
     <td width="33.33%" valign="top">
       <a id="preview-overview" href="docs/assets/ui-overview.png"><img src="docs/assets/ui-overview.png" alt="Administrator overview with traffic, usage and time-range controls" width="100%"></a>
@@ -87,12 +89,6 @@ The screenshots are full-viewport captures from the running application using sy
     <td width="33.33%" valign="top">
       <a id="preview-themes" href="docs/assets/ui-themes.png"><img src="docs/assets/ui-themes.png" alt="Theme selector showing light, dark, and system-following options" width="100%"></a>
       <p align="center"><strong>Theme selection</strong><br>Nine named palettes, with an option to follow the operating system.</p>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="3" align="center" valign="top">
-      <a id="preview-language" href="docs/assets/ui-language.png"><img src="docs/assets/ui-language.png" alt="Language selector with English and Simplified Chinese options" width="33.33%"></a>
-      <p align="center"><strong>Language selection</strong><br>Choose English or Simplified Chinese, or use automatic browser-language detection.</p>
     </td>
   </tr>
 </table>

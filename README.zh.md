@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="docs/assets/galaxy-atelier-promo.jpg" alt="Galaxy Atelier：自托管的自然语言图像创作工作区" width="60%">
+  <img src="docs/assets/galaxy-atelier-promo.jpg" alt="Galaxy Atelier：自托管的自然语言图像创作工作区">
 
   <h1>Galaxy Atelier</h1>
   <p><strong>将自然语言对话转化为图像的自托管工作室。</strong></p>
@@ -44,6 +44,10 @@ Galaxy Atelier 是一款自托管的图像工作区，也提供围绕工作区�
 - [当前限制](#当前限制)
 
 ## 工作区概览
+<td width="33.33%" valign="top">
+  <a id="preview-studio" href="docs/assets/ui-studio.png"><img src="docs/assets/ui-studio.png" alt="Galaxy Atelier 图像工作区，展示会话导航、提示词选项和对话输入区" width="100%"></a>
+  <p align="center"><strong>图像工作台</strong><br>会话导航、提示词模型开关、画布选项和对话输入区。</p>
+</td>
 
 | 区域 | 能力概览 |
 | --- | --- |
@@ -63,8 +67,8 @@ Galaxy Atelier 是一款自托管的图像工作区，也提供围绕工作区�
 <table>
   <tr>
     <td width="33.33%" valign="top">
-      <a id="preview-studio" href="docs/assets/ui-studio.png"><img src="docs/assets/ui-studio.png" alt="Galaxy Atelier 图像工作区，展示会话导航、提示词选项和对话输入区" width="100%"></a>
-      <p align="center"><strong>图像工作台</strong><br>会话导航、提示词模型开关、画布选项和对话输入区。</p>
+      <a id="preview-language" href="docs/assets/ui-language.png"><img src="docs/assets/ui-language.png" alt="中文和英文界面语言选择器"></a>
+      <p align="center"><strong>语言选择</strong><br>选择中文或英文，也可根据浏览器语言自动切换。</p>
     </td>
     <td width="33.33%" valign="top">
       <a id="preview-overview" href="docs/assets/ui-overview.png"><img src="docs/assets/ui-overview.png" alt="管理员运营概览，包含流量指标、时间范围控制和统计图表" width="100%"></a>
@@ -87,12 +91,6 @@ Galaxy Atelier 是一款自托管的图像工作区，也提供围绕工作区�
     <td width="33.33%" valign="top">
       <a id="preview-themes" href="docs/assets/ui-themes.png"><img src="docs/assets/ui-themes.png" alt="主题选择器，展示九种配色和系统外观选项" width="100%"></a>
       <p align="center"><strong>主题选择</strong><br>九套命名主题，支持跟随操作系统外观。</p>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="3" align="center" valign="top">
-      <a id="preview-language" href="docs/assets/ui-language.png"><img src="docs/assets/ui-language.png" alt="中文和英文界面语言选择器" width="33.33%"></a>
-      <p align="center"><strong>语言选择</strong><br>选择中文或英文，也可根据浏览器语言自动切换。</p>
     </td>
   </tr>
 </table>
