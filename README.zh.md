@@ -58,7 +58,7 @@ Galaxy Atelier 是一款自托管的图像工作区，也提供围绕工作区�
 
 ## 界面截图
 
-以下截图来自实际运行的应用，使用合成演示数据。重点展示工作区和日常管理界面，而不是把生成作品当作产品主视觉。
+以下每张图片均以全宽展示完整应用视口，来自实际运行的应用和合成演示数据。重点展示工作区和日常管理界面，而不是把生成作品当作产品主视觉。
 
 ### 工作区与对话
 
@@ -67,43 +67,33 @@ Galaxy Atelier 是一款自托管的图像工作区，也提供围绕工作区�
 
 ### 管理与用量
 
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <a id="preview-overview" href="#workspace-operations"><img src="docs/assets/ui-overview.png" alt="管理员运营概览，包含流量指标、时间范围控制和统计图表" width="100%"></a>
-      <p align="center"><strong>运营概览</strong><br>流量、成功率、用量、预估成本和分时段明细。</p>
-    </td>
-    <td width="50%" valign="top">
-      <a id="preview-accounts" href="#workspace-operations"><img src="docs/assets/ui-accounts.png" alt="管理员账号管理页面，包含创建账号和角色控制" width="100%"></a>
-      <p align="center"><strong>账号管理</strong><br>创建账号、分配角色、重置密码和管理访问权限。</p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <a id="preview-usage" href="#workspace-operations"><img src="docs/assets/ui-account-usage.png" alt="用户用量报告，显示请求总数、Token 用量和模型统计" width="100%"></a>
-      <p align="center"><strong>个人用量</strong><br>查看本账号的请求、模型用量和预估成本。</p>
-    </td>
-    <td width="50%" valign="top">
-      <a id="preview-audit" href="#workspace-operations"><img src="docs/assets/ui-audit.png" alt="筛选后的运营审计日志及导出控件" width="100%"></a>
-      <p align="center"><strong>审计日志</strong><br>筛选运维事件、检查元数据，并将匹配记录导出为 CSV。</p>
-    </td>
-  </tr>
-</table>
+<p align="center"><a id="preview-overview" href="#workspace-operations"><img src="docs/assets/ui-overview.png" alt="管理员运营概览，包含流量指标、时间范围控制和统计图表" width="100%"></a></p>
+<p align="center"><strong>运营概览</strong><br>流量、成功率、用量、预估成本和分时段明细。</p>
 
-### 界面偏好
+### 账号管理
 
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <a id="preview-themes" href="#interface-preferences"><img src="docs/assets/ui-themes.png" alt="主题选择器，展示九种配色和系统外观选项" width="100%"></a>
-      <p align="center"><strong>九套命名主题</strong><br>4 套浅色、5 套深色，并可跟随操作系统外观。</p>
-    </td>
-    <td width="50%" valign="top">
-      <a id="preview-language" href="#interface-preferences"><img src="docs/assets/ui-language.png" alt="中文和英文界面语言选择器" width="100%"></a>
-      <p align="center"><strong>两种界面语言</strong><br>可选择中文或英文，也可根据浏览器语言自动切换。</p>
-    </td>
-  </tr>
-</table>
+<p align="center"><a id="preview-accounts" href="#workspace-operations"><img src="docs/assets/ui-accounts.png" alt="管理员账号管理页面，包含创建账号和角色控制" width="100%"></a></p>
+<p align="center"><strong>账号管理</strong><br>创建账号、分配角色、重置密码和管理访问权限。</p>
+
+### 个人用量
+
+<p align="center"><a id="preview-usage" href="#workspace-operations"><img src="docs/assets/ui-account-usage.png" alt="用户用量报告，显示请求总数、Token 用量和模型统计" width="100%"></a></p>
+<p align="center"><strong>个人用量</strong><br>查看本账号的请求、模型用量和预估成本。</p>
+
+### 审计日志
+
+<p align="center"><a id="preview-audit" href="#workspace-operations"><img src="docs/assets/ui-audit.png" alt="筛选后的运营审计日志及导出控件" width="100%"></a></p>
+<p align="center"><strong>审计日志</strong><br>筛选运维事件、检查元数据，并将匹配记录导出为 CSV。</p>
+
+### 主题选择
+
+<p align="center"><a id="preview-themes" href="#interface-preferences"><img src="docs/assets/ui-themes.png" alt="主题选择器，展示九种配色和系统外观选项" width="100%"></a></p>
+<p align="center"><strong>九套命名主题</strong><br>4 套浅色、5 套深色，并可跟随操作系统外观。</p>
+
+### 语言选择
+
+<p align="center"><a id="preview-language" href="#interface-preferences"><img src="docs/assets/ui-language.png" alt="中文和英文界面语言选择器" width="100%"></a></p>
+<p align="center"><strong>两种界面语言</strong><br>可选择中文或英文，也可根据浏览器语言自动切换。</p>
 
 项目附带[图像提示词编写规范](AGENT.md)。身份验证、服务商调用、文件存储和图像交付仍由服务器控制。
 

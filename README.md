@@ -28,6 +28,7 @@ The application is deliberately limited to this workflow. Its prompt model does 
 ## Contents
 
 - [Workspace Overview](#workspace-overview)
+- [Screenshots](#screenshots)
 - [Feature Guide](#feature-guide)
 - [Image Workflow](#image-workflow)
 - [Generated Examples](#generated-examples)
@@ -58,52 +59,42 @@ For the complete capability register, code evidence, and the editorial decisions
 <a id="screenshots"></a>
 ## Screenshots
 
-These screenshots were captured from the running application using synthetic demonstration data. They show the workspace and its day-to-day administration rather than using generated art as the product's main presentation.
+Each image is a full-width capture of the complete application viewport, captured from the running application with synthetic demonstration data. They show the workspace and its day-to-day administration rather than using generated art as the product's main presentation.
 
 ### Workspace and conversations
 
 <p align="center"><a id="preview-studio" href="#image-workflow"><img src="docs/assets/ui-studio.png" alt="The Galaxy Atelier workspace with session navigation, image prompt controls, and the conversation composer" width="100%"></a></p>
 <p align="center"><strong>Image Studio</strong><br>Create sessions, choose prompt-model and canvas options, and keep the conversation workflow in one workspace.</p>
 
-### Administration and usage
+### Operations overview
 
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <a id="preview-overview" href="#workspace-operations"><img src="docs/assets/ui-overview.png" alt="Administrator overview with traffic metrics, time-range controls, and usage chart" width="100%"></a>
-      <p align="center"><strong>Operations overview</strong><br>Traffic, success, usage, estimated cost, and period-by-period detail.</p>
-    </td>
-    <td width="50%" valign="top">
-      <a id="preview-accounts" href="#workspace-operations"><img src="docs/assets/ui-accounts.png" alt="Administrator account management with account creation and role controls" width="100%"></a>
-      <p align="center"><strong>Account management</strong><br>Create accounts, assign roles, reset passwords, and manage access.</p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <a id="preview-usage" href="#workspace-operations"><img src="docs/assets/ui-account-usage.png" alt="Member usage report with request totals, token counts, and model breakdown" width="100%"></a>
-      <p align="center"><strong>Member usage</strong><br>Each account can inspect its own requests, model usage, and estimated cost.</p>
-    </td>
-    <td width="50%" valign="top">
-      <a id="preview-audit" href="#workspace-operations"><img src="docs/assets/ui-audit.png" alt="Filtered operational audit log with export controls" width="100%"></a>
-      <p align="center"><strong>Audit logs</strong><br>Filter operational events, inspect metadata, and export matching records as CSV.</p>
-    </td>
-  </tr>
-</table>
+<p align="center"><a id="preview-overview" href="#workspace-operations"><img src="docs/assets/ui-overview.png" alt="Administrator overview with traffic metrics, time-range controls, and usage chart" width="100%"></a></p>
+<p align="center"><strong>Operations overview</strong><br>Traffic, success, usage, estimated cost, and period-by-period detail.</p>
 
-### Interface preferences
+### Account management
 
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <a id="preview-themes" href="#interface-preferences"><img src="docs/assets/ui-themes.png" alt="Theme selector showing nine color palettes and system appearance" width="100%"></a>
-      <p align="center"><strong>Nine named themes</strong><br>Four light palettes, five dark palettes, and an option to follow the operating system.</p>
-    </td>
-    <td width="50%" valign="top">
-      <a id="preview-language" href="#interface-preferences"><img src="docs/assets/ui-language.png" alt="Language selector with English and Chinese options" width="100%"></a>
-      <p align="center"><strong>Two interface languages</strong><br>Choose English or Simplified Chinese, or let the browser language be detected automatically.</p>
-    </td>
-  </tr>
-</table>
+<p align="center"><a id="preview-accounts" href="#workspace-operations"><img src="docs/assets/ui-accounts.png" alt="Administrator account management with account creation and role controls" width="100%"></a></p>
+<p align="center"><strong>Account management</strong><br>Create accounts, assign roles, reset passwords, and manage access.</p>
+
+### Member usage
+
+<p align="center"><a id="preview-usage" href="#workspace-operations"><img src="docs/assets/ui-account-usage.png" alt="Member usage report with request totals, token counts, and model breakdown" width="100%"></a></p>
+<p align="center"><strong>Member usage</strong><br>Each account can inspect its own requests, model usage, and estimated cost.</p>
+
+### Audit logs
+
+<p align="center"><a id="preview-audit" href="#workspace-operations"><img src="docs/assets/ui-audit.png" alt="Filtered operational audit log with export controls" width="100%"></a></p>
+<p align="center"><strong>Audit logs</strong><br>Filter operational events, inspect metadata, and export matching records as CSV.</p>
+
+### Theme selection
+
+<p align="center"><a id="preview-themes" href="#interface-preferences"><img src="docs/assets/ui-themes.png" alt="Theme selector showing nine color palettes and system appearance" width="100%"></a></p>
+<p align="center"><strong>Nine named themes</strong><br>Four light palettes, five dark palettes, and an option to follow the operating system.</p>
+
+### Language selection
+
+<p align="center"><a id="preview-language" href="#interface-preferences"><img src="docs/assets/ui-language.png" alt="Language selector with English and Chinese options" width="100%"></a></p>
+<p align="center"><strong>Two interface languages</strong><br>Choose English or Simplified Chinese, or let the browser language be detected automatically.</p>
 
 ## Feature Guide
 
