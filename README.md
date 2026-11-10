@@ -5,7 +5,7 @@
   <p><strong>A self-hosted image studio for turning natural-language conversations into images.</strong></p>
   <p>
     <a href="README.zh.md">简体中文</a> ·
-    <a href="#what-it-is">Overview</a> ·
+    <a href="#product-highlights">Overview</a> ·
     <a href="#showcase">Showcase</a> ·
     <a href="#getting-started">Getting started</a> ·
     <a href="#ubuntu-deployment">Ubuntu deployment</a>
@@ -22,11 +22,13 @@ Galaxy Atelier is a small, self-hosted web workspace for image creation. Describ
 
 It is designed around one deliberately narrow job: turn a user's creative request into an image. It is not a general-purpose computer agent.
 
+**Category:** Self-hosted, conversational image-generation workspace<br>
+**Best for:** Individuals and small groups who want to choose their own compatible model APIs and keep workspace data on infrastructure they manage.
+
 ## Contents
 
+- [Product Highlights](#product-highlights)
 - [Showcase](#showcase)
-- [What It Is](#what-it-is)
-- [Features](#features)
 - [How Generation Works](#how-generation-works)
 - [Architecture](#architecture)
 - [Security and Data Boundaries](#security-and-data-boundaries)
@@ -39,9 +41,19 @@ It is designed around one deliberately narrow job: turn a user's creative reques
 - [Repository Layout](#repository-layout)
 - [Limitations](#limitations)
 
+## Product Highlights
+
+| Workflow | Best for | What Galaxy Atelier provides |
+| --- | --- | --- |
+| **Create from conversation** | Starting with an idea rather than a finished image prompt | An optional prompt-model switch, model-selected or preset canvas sizes, named sessions, and a persistent queue of up to 12 requests per session. |
+| **Refine an existing image** | Making targeted changes or using a visual reference | Drag-and-drop image uploads, explicit edit or reference modes, and the latest successful image as context for follow-up edits in that session. |
+| **Run a private workspace** | Managing a self-hosted image service for multiple accounts | Administrator-managed users and provider settings, account-scoped sessions and usage, operational traffic views, and exportable audit logs. |
+
+The interface also supports English and Simplified Chinese, automatic browser-language selection, and ten themes including system appearance.
+
 ## Showcase
 
-The following are real images generated in Galaxy Atelier with the configured image API. Output dimensions are determined by the provider; the application records the dimensions returned by each image.
+The following are real images generated in Galaxy Atelier with the configured image API. Output dimensions are provider-selected; the application records the dimensions returned by each image.
 
 <table>
   <tr>
@@ -68,29 +80,18 @@ The following are real images generated in Galaxy Atelier with the configured im
 
 The project ships with an [image-generation prompt guide](AGENT.md). It constrains the language model to prepare prompts only; the server remains responsible for authentication, provider calls, storage, and image delivery.
 
-## What It Is
+## Detailed Features
 
-Galaxy Atelier combines a conversational image workspace with a small self-hosted service:
-
-- The React client provides accounts, sessions, a prompt composer, image previews, usage views, and administration pages.
-- The Node.js service authenticates requests, stores application records in SQLite, and calls only the configured language and image providers.
-- The prompt model is optional. Turn it off to send a direct text-to-image request.
-- A reference image can guide a generation or be sent as an edit target. Follow-up edits use the most recent successful image in the same session.
-
-The interface supports English and Chinese, follows the browser language by default, and includes multiple light and dark themes.
-
-## Features
-
-- **Conversational image creation:** Keep prompts and generated results together in named sessions.
-- **Prompt refinement toggle:** Review the final prompt sent to the image model, or bypass the prompt model for direct generation.
-- **Reference-guided edits:** Upload or drag in a supported image, choose whether it is an edit target or visual reference, and continue editing the latest result in the session.
-- **Canvas selection:** Choose square, portrait, landscape, or let the model decide. Direct generation without prompt refinement uses a landscape preset when model-selected sizing is requested.
-- **Persistent request queue:** Queue up to 12 requests per session, edit or remove queued work, and retain it across service restarts.
+- **Conversational image creation:** Keep creative requests, prompt-model replies, and generated results together in named sessions.
+- **Prompt refinement toggle:** Inspect the final prompt sent to the image model, or bypass the prompt model for direct generation.
+- **Reference-guided edits:** Upload or drag in an image, choose edit-target or visual-reference mode, and use the latest successful image for a follow-up edit in the same session.
+- **Canvas selection:** Choose square, portrait, landscape, or model-selected sizing. Direct generation without prompt refinement uses a landscape preset when model-selected sizing is requested.
+- **Persistent request queue:** Queue up to 12 requests per session, edit or remove waiting requests, and retain them across service restarts.
 - **Session controls:** Search, rename, archive, restore, and delete sessions.
-- **Generated files:** Images are checked for supported formats and dimensions. Completed images receive descriptive, model-generated filenames.
-- **Usage and operations:** View personal usage, administrator traffic summaries, account usage, and exportable audit logs.
-- **Workspace administration:** An administrator can create, disable, and delete accounts, and configure compatible API endpoints, credentials, model IDs, and usage prices.
-- **Internationalized interface:** English and Simplified Chinese, automatic browser-language selection, and ten theme choices including system appearance.
+- **Generated files:** Validate supported image formats and dimensions, and give completed images descriptive model-generated filenames.
+- **Usage and operations:** View personal usage, administrator traffic summaries, per-account usage, and exportable audit logs.
+- **Workspace administration:** Create, disable, and delete accounts; configure compatible API endpoints, credentials, model IDs, and usage prices.
+- **Internationalized interface:** English and Simplified Chinese, automatic browser-language selection, and ten themes including system appearance.
 
 ## How Generation Works
 
