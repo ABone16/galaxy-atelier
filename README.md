@@ -46,15 +46,22 @@ It is designed around one deliberately narrow job: turn a user's creative reques
 
 | Workflow | Best for | What Galaxy Atelier provides |
 | --- | --- | --- |
-| **[Create from conversation](#conversation-to-image)** | Starting with an idea rather than a finished image prompt | An optional prompt-model switch, model-selected or preset canvas sizes, first-turn session naming, and a persistent queue of up to 12 requests per session. |
+| **[Create from conversation](#conversation-to-image)** | Starting with an idea rather than a finished image prompt | An optional prompt-model switch, model-selected or preset canvas sizes, first-turn session naming, and a persistent per-session request queue. |
 | **[Edit or reference an image](#image-guided-editing)** | Making targeted changes or using a visual reference | Drag-and-drop image uploads, format normalization, explicit edit or reference modes, and multimodal image context when prompt refinement is enabled. |
 | **[Run a self-hosted workspace](#workspace-operations)** | Managing an image service for multiple accounts | Administrator-managed users and provider settings, account-scoped sessions and usage, operational traffic views, and exportable audit logs. |
 
-The interface also supports English and Simplified Chinese, automatic browser-language selection, and ten themes including system appearance.
+The interface also supports English and Simplified Chinese, automatic browser-language selection, nine named themes (four light and five dark), and a system-following option.
+
+For a capability-by-capability register, source evidence, and notes on what belongs in the product story, see the [feature inventory](docs/FEATURE_INVENTORY.md).
 
 ## Showcase
 
-The following are real images generated in Galaxy Atelier with the configured image API. Output dimensions are provider-selected; the application records the dimensions returned by each image.
+The interface screenshot below was captured from the running application. The artworks in the gallery were generated in Galaxy Atelier with the configured image API. You can choose a size preset or let the provider decide; the application records the actual dimensions returned for each image. Gallery previews are optimized JPEGs, while the captions show the dimensions of the generated PNGs.
+
+<p align="center">
+  <a id="preview-workbench" href="#conversation-to-image"><img src="docs/assets/workbench-greenhouse-result.jpg" alt="Galaxy Atelier's image studio showing a completed greenhouse generation and the conversation composer" width="60%"></a>
+</p>
+<p align="center"><strong>The Image Studio</strong><br>A screenshot captured from the running application with a completed generation.</p>
 
 <table>
   <tr>
@@ -68,13 +75,9 @@ The following are real images generated in Galaxy Atelier with the configured im
     </td>
   </tr>
   <tr>
-    <td width="50%" valign="top">
-      <a id="preview-lighthouse" href="#conversation-to-image"><img src="docs/assets/coastal-lighthouse-screen-print.jpg" alt="A vintage screen-print travel poster featuring a coastal lighthouse" width="100%"></a>
+    <td colspan="2" align="center" valign="top">
+      <a id="preview-lighthouse" href="#conversation-to-image"><img src="docs/assets/coastal-lighthouse-screen-print.jpg" alt="A vintage screen-print travel poster featuring a coastal lighthouse" width="50%"></a>
       <p align="center"><strong>Coastal Lighthouse Screen Print</strong><br>2048 × 3072 · Model-selected portrait canvas</p>
-    </td>
-    <td width="50%" valign="top">
-      <a id="preview-workbench" href="#conversation-to-image"><img src="docs/assets/workbench-greenhouse-result.jpg" alt="Galaxy Atelier displaying a completed greenhouse generation in its image studio" width="100%"></a>
-      <p align="center"><strong>The Image Studio</strong><br>A screenshot of the running application with a completed generation.</p>
     </td>
   </tr>
 </table>
@@ -93,10 +96,10 @@ The project ships with an [image-generation prompt guide](AGENT.md). It constrai
 
 **Highlights:**
 
-- Enable or skip prompt refinement for each request. When enabled, the prompt model can use applicable prior text context and an attached image; on a new session's first request it also suggests a session title and an image name.
-- Inspect the refined prompt and the redacted provider request details. The interface presents model replies and available failure feedback, not hidden chain-of-thought.
-- Choose square, portrait, landscape, or model-selected sizing. If refinement is skipped while sizing is model-selected, the direct request uses the landscape preset.
-- Queue up to 12 requests per session, edit or remove waiting items, and retain the queue across service restarts.
+- Enable or skip prompt refinement for each request. When enabled, the prompt model can use the previous successful turn's text prompt pair and an attached image; on a new session's first request it can also suggest a session title and an image name.
+- Expand the refined prompt and review the workflow summary, model details, and available model feedback, including feedback from failed requests. The interface does not expose hidden chain-of-thought or a serialized API request body.
+- Choose square, portrait, landscape, or model-selected sizing. For direct text-to-image requests without a reference image, model-selected sizing falls back to the landscape preset.
+- Queue up to 12 requests per session, edit a queued prompt or prompt-model choice, remove an item, or move it back to the composer to change its size or reference image. The queue persists across service restarts.
 - Completed images receive descriptive filenames when the prompt model returns a title, and the studio records the actual output dimensions.
 
 **Preview:** [Greenhouse](#preview-greenhouse) · [Tokyo record shop](#preview-tokyo) · [Lighthouse poster](#preview-lighthouse) · [Running image studio](#preview-workbench)
@@ -112,8 +115,8 @@ The project ships with an [image-generation prompt guide](AGENT.md). It constrai
 **Highlights:**
 
 - Add an image with the picker or drag and drop. The client detects image signatures, decodes browser-supported formats, and normalizes the upload to PNG before submission.
-- The prompt model receives an attached image as multimodal input when prompt refinement is enabled; the image is also sent to the configured image API for the selected edit or reference workflow.
-- When prompt refinement is enabled and no new image is attached, a follow-up request can use the latest successful image in that session as its edit target. With prompt refinement skipped, attach the image explicitly.
+- The prompt model receives an attached image as multimodal input when prompt refinement is enabled; the most recent successful prompt-refined turn's user prompt and refined prompt can also be included. The image is sent to the configured image API for the selected edit or reference workflow.
+- When prompt refinement is enabled and no new image is attached, a follow-up request can reuse the image from the most recent successful prompt-refined turn in that session as its edit target. With prompt refinement skipped, attach the image explicitly.
 - Follow-up edit instructions ask the prompt model to preserve visual attributes the user did not request to change. Reference mode instead asks it to use only the named attributes as guidance.
 - Reference uploads are limited to 10 MiB and checked for valid content and dimensions; queued image data is encrypted while waiting.
 
@@ -134,7 +137,7 @@ The project ships with an [image-generation prompt guide](AGENT.md). It constrai
 - Edit the prompt model's system instructions. By default, the project uses the included `AGENT.md` prompt-writing guide.
 - Search, rename, archive, restore, or delete sessions. Users can inspect their own usage; administrators can review traffic by minute, hour, day, or month, with detailed request, model, account, duration, and cost data.
 - Filter, export, and delete audit-log entries. Logs omit API keys and full prompts.
-- Use the interface in English or Simplified Chinese, with browser-language detection and ten themes including a system-following option.
+- Use the interface in English or Simplified Chinese, with browser-language detection, nine named themes (four light and five dark), and a system-following option.
 
 **Preview:** See the [running image studio](#preview-workbench) for the generated-image conversation view.
 
@@ -143,8 +146,8 @@ The project ships with an [image-generation prompt guide](AGENT.md). It constrai
 1. Sign in to an account provisioned by the administrator and open an image session.
 2. Describe the scene. Optionally attach a reference image and select edit or reference mode.
 3. Choose whether to use prompt refinement and select an aspect-ratio preset or model-selected sizing.
-4. If enabled, the configured language model receives the current request, applicable prior text context, and any attached image as multimodal input. When no image is attached, a follow-up can include the latest successful image as its edit target. If prompt refinement is disabled, attach an image explicitly to provide image context.
-5. The server sends a generation or edit request to the configured image API. When prompt refinement is disabled, the request goes directly to image generation; an explicitly attached reference is still forwarded to the image provider.
+4. If enabled, the configured language model receives the current request, the most recent successful prompt-refined turn's user prompt and refined prompt when available, and any attached image as multimodal input. When no image is attached, a follow-up can reuse that turn's image as its edit target. If prompt refinement is disabled, attach an image explicitly to provide image context.
+5. The server sends a generation or edit request to the configured image API. When prompt refinement is disabled, the user's text goes directly to the image API; an explicitly attached reference is still forwarded for the selected image workflow.
 6. The result, actual image dimensions, provider/model metadata, usage when reported, and generation status appear in the session. Failed requests retain the model's available text response for inspection.
 
 The prompt model is not a source of hidden tool access. The application does not give it a shell, filesystem, browser, plugin, or arbitrary URL-fetching tool.
@@ -168,6 +171,7 @@ The frontend is built with Vite. The backend uses Node.js's built-in HTTP and SQ
 
 - There is no public registration. The first administrator is created from server environment variables; administrators provision subsequent accounts.
 - Passwords are scrypt-hashed. Session cookies are `HttpOnly` and `SameSite`; production cookies also use `Secure`.
+- Login is temporarily rate-limited after repeated failed attempts for the same email and client IP.
 - Provider credentials and administrator-overridden endpoints are encrypted at rest with AES-256-GCM using `APP_ENCRYPTION_KEY`. The key must remain stable for stored provider settings to remain decryptable. API responses do not return saved provider keys.
 - Session, message, queue, image, and usage reads are scoped to the authenticated account. Administration routes require the administrator role.
 - Uploaded reference images are signature-checked, bounded by size and dimensions, and sent only to the configured providers needed for the selected workflow. Queued references are encrypted in SQLite while waiting and removed when consumed or deleted; audit entries retain metadata rather than image bytes.
@@ -323,6 +327,8 @@ docs/assets/                 README artwork, generated examples, and UI screensh
 AGENT.md                     Prompt-writing role and tool boundary for the host
 .env.example                 Local and production environment variable template
 ```
+
+For the full feature register and README editorial rationale, see [`docs/FEATURE_INVENTORY.md`](docs/FEATURE_INVENTORY.md).
 
 ## Limitations
 
