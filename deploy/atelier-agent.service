@@ -1,0 +1,35 @@
+[Unit]
+Description=Galaxy Atelier
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=atelier-agent
+Group=atelier-agent
+WorkingDirectory=/opt/atelier-agent
+EnvironmentFile=/etc/atelier-agent/atelier-agent.env
+ExecStart=/usr/bin/node /opt/atelier-agent/dist/server/index.js
+Restart=on-failure
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+CapabilityBoundingSet=
+RestrictSUIDSGID=true
+LockPersonality=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectProc=invisible
+ProcSubset=pid
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ReadWritePaths=/var/lib/atelier-agent
+
+[Install]
+WantedBy=multi-user.target

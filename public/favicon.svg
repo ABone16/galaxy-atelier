@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Galaxy Atelier</title>
+  <desc id="desc">A golden star orbiting a blue galaxy</desc>
+  <rect width="64" height="64" rx="15" fill="#0d1728"/>
+  <circle cx="32" cy="32" r="19" fill="#173252"/>
+  <ellipse cx="32" cy="32" rx="25" ry="10.5" transform="rotate(-28 32 32)" fill="none" stroke="#72c9e8" stroke-width="2.5" opacity=".9"/>
+  <circle cx="48.5" cy="20.5" r="2.25" fill="#f4d47c"/>
+  <path d="m32 12 3.65 14.35L50 30l-14.35 3.65L32 48l-3.65-14.35L18 30l10.35-3.65L32 12Z" fill="#f4d47c"/>
+  <path d="m32 18.5 2.1 9.4L43.5 30l-9.4 2.1L32 41.5l-2.1-9.4L20.5 30l9.4-2.1L32 18.5Z" fill="#fff4c4"/>
+</svg>
