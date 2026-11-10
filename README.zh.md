@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="docs/assets/galaxy-atelier-promo.jpg" alt="Galaxy Atelier：自托管的自然语言图像创作工作区" width="100%">
+  <img src="docs/assets/galaxy-atelier-promo.jpg" alt="Galaxy Atelier：自托管的自然语言图像创作工作区" width="60%">
 
   <h1>Galaxy Atelier</h1>
   <p><strong>将自然语言对话转化为图像的自托管工作室。</strong></p>
@@ -58,42 +58,44 @@ Galaxy Atelier 是一款自托管的图像工作区，也提供围绕工作区�
 
 ## 界面截图
 
-以下每张图片均以全宽展示完整应用视口，来自实际运行的应用和合成演示数据。重点展示工作区和日常管理界面，而不是把生成作品当作产品主视觉。
+以下截图来自使用合成演示数据运行的应用。紧凑的缩略图便于快速浏览，点击图片可查看完整视口。
 
-### 工作区与对话
-
-<p align="center"><a id="preview-studio" href="#图像工作流"><img src="docs/assets/ui-studio.png" alt="Galaxy Atelier 图像工作区，展示会话导航、提示词选项和对话输入区" width="100%"></a></p>
-<p align="center"><strong>图像工作台</strong><br>创建会话、选择提示词模型和画布选项，并在同一工作区完成对话式创作。</p>
-
-### 管理与用量
-
-<p align="center"><a id="preview-overview" href="#workspace-operations"><img src="docs/assets/ui-overview.png" alt="管理员运营概览，包含流量指标、时间范围控制和统计图表" width="100%"></a></p>
-<p align="center"><strong>运营概览</strong><br>流量、成功率、用量、预估成本和分时段明细。</p>
-
-### 账号管理
-
-<p align="center"><a id="preview-accounts" href="#workspace-operations"><img src="docs/assets/ui-accounts.png" alt="管理员账号管理页面，包含创建账号和角色控制" width="100%"></a></p>
-<p align="center"><strong>账号管理</strong><br>创建账号、分配角色、重置密码和管理访问权限。</p>
-
-### 个人用量
-
-<p align="center"><a id="preview-usage" href="#workspace-operations"><img src="docs/assets/ui-account-usage.png" alt="用户用量报告，显示请求总数、Token 用量和模型统计" width="100%"></a></p>
-<p align="center"><strong>个人用量</strong><br>查看本账号的请求、模型用量和预估成本。</p>
-
-### 审计日志
-
-<p align="center"><a id="preview-audit" href="#workspace-operations"><img src="docs/assets/ui-audit.png" alt="筛选后的运营审计日志及导出控件" width="100%"></a></p>
-<p align="center"><strong>审计日志</strong><br>筛选运维事件、检查元数据，并将匹配记录导出为 CSV。</p>
-
-### 主题选择
-
-<p align="center"><a id="preview-themes" href="#interface-preferences"><img src="docs/assets/ui-themes.png" alt="主题选择器，展示九种配色和系统外观选项" width="100%"></a></p>
-<p align="center"><strong>九套命名主题</strong><br>4 套浅色、5 套深色，并可跟随操作系统外观。</p>
-
-### 语言选择
-
-<p align="center"><a id="preview-language" href="#interface-preferences"><img src="docs/assets/ui-language.png" alt="中文和英文界面语言选择器" width="100%"></a></p>
-<p align="center"><strong>两种界面语言</strong><br>可选择中文或英文，也可根据浏览器语言自动切换。</p>
+<table>
+  <tr>
+    <td width="33.33%" valign="top">
+      <a id="preview-studio" href="docs/assets/ui-studio.png"><img src="docs/assets/ui-studio.png" alt="Galaxy Atelier 图像工作区，展示会话导航、提示词选项和对话输入区" width="100%"></a>
+      <p align="center"><strong>图像工作台</strong><br>会话导航、提示词模型开关、画布选项和对话输入区。</p>
+    </td>
+    <td width="33.33%" valign="top">
+      <a id="preview-overview" href="docs/assets/ui-overview.png"><img src="docs/assets/ui-overview.png" alt="管理员运营概览，包含流量指标、时间范围控制和统计图表" width="100%"></a>
+      <p align="center"><strong>运营概览</strong><br>流量、成功率、用量、预估成本和分时段明细。</p>
+    </td>
+    <td width="33.33%" valign="top">
+      <a id="preview-accounts" href="docs/assets/ui-accounts.png"><img src="docs/assets/ui-accounts.png" alt="管理员账号管理页面，包含创建账号和角色控制" width="100%"></a>
+      <p align="center"><strong>账号管理</strong><br>创建账号、分配角色、停用访问、重置密码或删除账号。</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="33.33%" valign="top">
+      <a id="preview-usage" href="docs/assets/ui-account-usage.png"><img src="docs/assets/ui-account-usage.png" alt="用户用量报告，显示请求总数、Token 用量和模型统计" width="100%"></a>
+      <p align="center"><strong>个人用量</strong><br>查看本账号的请求、模型用量、响应时间和预估成本。</p>
+    </td>
+    <td width="33.33%" valign="top">
+      <a id="preview-audit" href="docs/assets/ui-audit.png"><img src="docs/assets/ui-audit.png" alt="筛选后的运营审计日志及导出控件" width="100%"></a>
+      <p align="center"><strong>审计日志</strong><br>筛选运维事件、检查元数据，并导出或删除匹配记录。</p>
+    </td>
+    <td width="33.33%" valign="top">
+      <a id="preview-themes" href="docs/assets/ui-themes.png"><img src="docs/assets/ui-themes.png" alt="主题选择器，展示九种配色和系统外观选项" width="100%"></a>
+      <p align="center"><strong>主题选择</strong><br>九套命名主题，支持跟随操作系统外观。</p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center" valign="top">
+      <a id="preview-language" href="docs/assets/ui-language.png"><img src="docs/assets/ui-language.png" alt="中文和英文界面语言选择器" width="33.33%"></a>
+      <p align="center"><strong>语言选择</strong><br>选择中文或英文，也可根据浏览器语言自动切换。</p>
+    </td>
+  </tr>
+</table>
 
 项目附带[图像提示词编写规范](AGENT.md)。身份验证、服务商调用、文件存储和图像交付仍由服务器控制。
 
@@ -115,7 +117,7 @@ Galaxy Atelier 是一款自托管的图像工作区，也提供围绕工作区�
 - 每个会话最多排队 12 个请求；可编辑排队提示词或是否使用提示词模型，也可删除项目，或将项目移回输入区修改尺寸与参考图。服务重启后队列仍会保留。
 - 如果提示词模型返回了图像名称，完成的图像会使用描述性文件名；工作台会记录服务端返回的实际尺寸。
 
-**预览：**[云海温室](#preview-greenhouse) · [东京唱片店](#preview-tokyo) · [灯塔海报](#preview-lighthouse) · [图像工作台](#preview-studio)
+**预览：**[图像工作台](#preview-studio) · [运营概览](#preview-overview)
 
 <a id="image-guided-editing"></a>
 ### 编辑或参考图像
@@ -174,26 +176,15 @@ Galaxy Atelier 是一款自托管的图像工作区，也提供围绕工作区�
 
 ## 生成示例
 
-以下示例由 Galaxy Atelier 调用已配置的图像 API 生成，用于展示工作流的输出；上方全宽截图展示的是应用本身。画廊使用压缩后的 JPEG 预览，图注标注生成 PNG 的原始尺寸。
+以下示例由 Galaxy Atelier 调用已配置的图像 API 生成。为让功能说明更易浏览，生成图默认收起；展开后可打开原图查看。
 
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <a id="preview-greenhouse" href="#图像工作流"><img src="docs/assets/greenhouse-over-clouds.jpg" alt="日出时漂浮在云海上空的玻璃植物温室" width="100%"></a>
-      <p align="center"><strong>云海之上的植物温室</strong><br>3344 × 1882 · 生成图像</p>
-    </td>
-    <td width="50%" valign="top">
-      <a id="preview-tokyo" href="#图像工作流"><img src="docs/assets/tokyo-vinyl-shop-rain.jpg" alt="雨夜东京街边亮着暖光的黑胶唱片店" width="100%"></a>
-      <p align="center"><strong>雨夜东京黑胶唱片店</strong><br>2804 × 2244 · 生成图像</p>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2" align="center" valign="top">
-      <a id="preview-lighthouse" href="#图像工作流"><img src="docs/assets/coastal-lighthouse-screen-print.jpg" alt="复古丝网印刷风格的海岸灯塔旅行海报" width="50%"></a>
-      <p align="center"><strong>海岸灯塔丝网印刷海报</strong><br>2048 × 3072 · 模型选择竖版画布</p>
-    </td>
-  </tr>
-</table>
+<details>
+  <summary>查看生成图示例</summary>
+
+  - [云海之上的植物温室](docs/assets/greenhouse-over-clouds.jpg) · 3344 × 1882
+  - [雨夜东京黑胶唱片店](docs/assets/tokyo-vinyl-shop-rain.jpg) · 2804 × 2244
+  - [海岸灯塔丝网印刷海报](docs/assets/coastal-lighthouse-screen-print.jpg) · 2048 × 3072
+</details>
 
 ## 系统架构
 

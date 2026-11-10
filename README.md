@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="docs/assets/galaxy-atelier-promo.jpg" alt="Galaxy Atelier - a self-hosted creative workspace for image generation" width="100%">
+  <img src="docs/assets/galaxy-atelier-promo.jpg" alt="Galaxy Atelier - a self-hosted creative workspace" width="60%">
 
   <h1>Galaxy Atelier</h1>
-  <p><strong>A self-hosted image studio for turning natural-language conversations into images.</strong></p>
+  <p><strong>A self-hosted workspace for model services, account-separated sessions, and image workflows.</strong></p>
   <p>
     <a href="README.zh.md">简体中文</a> ·
     <a href="#workspace-overview">Overview</a> ·
@@ -18,7 +18,7 @@
   </p>
 </div>
 
-Galaxy Atelier is a self-hosted web workspace for running provider-backed image sessions and administering the service around them. Operators provision accounts and choose the prompt and image APIs; members work in account-scoped sessions with image context, request queues, and visible model feedback. Usage and operational records stay available to the people who run the workspace.
+Galaxy Atelier is a self-hosted workspace for teams that need to manage model services, provision users, and keep each member's sessions and usage separate. Administrators configure the prompt and image APIs and oversee activity; members work in their own searchable sessions with prompt-model controls, image context, and persistent request queues.
 
 The application is deliberately limited to this workflow. Its prompt model does not receive tools for controlling the host computer.
 
@@ -31,7 +31,6 @@ The application is deliberately limited to this workflow. Its prompt model does 
 - [Screenshots](#screenshots)
 - [Feature Guide](#feature-guide)
 - [Image Workflow](#image-workflow)
-- [Generated Examples](#generated-examples)
 - [Architecture](#architecture)
 - [Security and Data Boundaries](#security-and-data-boundaries)
 - [Requirements](#requirements)
@@ -47,116 +46,109 @@ The application is deliberately limited to this workflow. Its prompt model does 
 
 | Area | What it provides |
 | --- | --- |
-| **Workspace and accounts** | Administrator-provisioned accounts, account-scoped sessions and usage, searchable session history, archive/restore, and deletion controls. |
-| **Provider administration** | Separate prompt and image API settings, editable base URLs and model IDs, model-list discovery, and configurable usage pricing. |
-| **Operational visibility** | Member usage summaries, administrator traffic analytics across four time ranges, model/account breakdowns, and filterable CSV-exportable audit logs. |
-| **Daily workflow** | A conversational image studio with optional prompt refinement, edit/reference modes, image uploads, model-selected sizing, and persistent per-session queues. |
+| **Accounts and separation** | Admin-created accounts with member/admin roles; sessions, uploaded images, generated images, queues, and personal usage are scoped to the signed-in account. |
+| **Prompt and image services** | Separate compatible API settings, editable endpoints and model IDs, model discovery, connectivity checks, configurable pricing, and editable prompt instructions. |
+| **Sessions and Prompt Model** | Searchable conversations with optional prompt refinement, direct-to-image mode, edit/reference image context, model-selected canvas sizing, and a persistent queue. |
+| **Operations and preferences** | Per-user usage, admin traffic and model analytics, exportable audit logs, English/Chinese language selection, and nine themes plus system appearance. |
 
 The interface also supports English and Simplified Chinese, browser-language detection, nine named themes (four light and five dark), and a system-following appearance option.
 
 For the complete capability register, code evidence, and the editorial decisions behind this README, see the [feature inventory](docs/FEATURE_INVENTORY.md).
 
 <a id="screenshots"></a>
-## Screenshots
+## Feature Screenshots
 
-Each image is a full-width capture of the complete application viewport, captured from the running application with synthetic demonstration data. They show the workspace and its day-to-day administration rather than using generated art as the product's main presentation.
+The screenshots are full-viewport captures from the running application using synthetic demo data. Compact previews keep the feature overview scannable; open any image to inspect the original full-size page.
 
-### Workspace and conversations
-
-<p align="center"><a id="preview-studio" href="#image-workflow"><img src="docs/assets/ui-studio.png" alt="The Galaxy Atelier workspace with session navigation, image prompt controls, and the conversation composer" width="100%"></a></p>
-<p align="center"><strong>Image Studio</strong><br>Create sessions, choose prompt-model and canvas options, and keep the conversation workflow in one workspace.</p>
-
-### Operations overview
-
-<p align="center"><a id="preview-overview" href="#workspace-operations"><img src="docs/assets/ui-overview.png" alt="Administrator overview with traffic metrics, time-range controls, and usage chart" width="100%"></a></p>
-<p align="center"><strong>Operations overview</strong><br>Traffic, success, usage, estimated cost, and period-by-period detail.</p>
-
-### Account management
-
-<p align="center"><a id="preview-accounts" href="#workspace-operations"><img src="docs/assets/ui-accounts.png" alt="Administrator account management with account creation and role controls" width="100%"></a></p>
-<p align="center"><strong>Account management</strong><br>Create accounts, assign roles, reset passwords, and manage access.</p>
-
-### Member usage
-
-<p align="center"><a id="preview-usage" href="#workspace-operations"><img src="docs/assets/ui-account-usage.png" alt="Member usage report with request totals, token counts, and model breakdown" width="100%"></a></p>
-<p align="center"><strong>Member usage</strong><br>Each account can inspect its own requests, model usage, and estimated cost.</p>
-
-### Audit logs
-
-<p align="center"><a id="preview-audit" href="#workspace-operations"><img src="docs/assets/ui-audit.png" alt="Filtered operational audit log with export controls" width="100%"></a></p>
-<p align="center"><strong>Audit logs</strong><br>Filter operational events, inspect metadata, and export matching records as CSV.</p>
-
-### Theme selection
-
-<p align="center"><a id="preview-themes" href="#interface-preferences"><img src="docs/assets/ui-themes.png" alt="Theme selector showing nine color palettes and system appearance" width="100%"></a></p>
-<p align="center"><strong>Nine named themes</strong><br>Four light palettes, five dark palettes, and an option to follow the operating system.</p>
-
-### Language selection
-
-<p align="center"><a id="preview-language" href="#interface-preferences"><img src="docs/assets/ui-language.png" alt="Language selector with English and Chinese options" width="100%"></a></p>
-<p align="center"><strong>Two interface languages</strong><br>Choose English or Simplified Chinese, or let the browser language be detected automatically.</p>
+<table>
+  <tr>
+    <td width="33.33%" valign="top">
+      <a id="preview-studio" href="docs/assets/ui-studio.png"><img src="docs/assets/ui-studio.png" alt="Image Studio with session navigation, prompt-model toggle, canvas sizing, and composer" width="100%"></a>
+      <p align="center"><strong>Image Studio and Prompt Model</strong><br>Session navigation, prompt-model on/off control, canvas sizing, and the conversation composer.</p>
+    </td>
+    <td width="33.33%" valign="top">
+      <a id="preview-overview" href="docs/assets/ui-overview.png"><img src="docs/assets/ui-overview.png" alt="Administrator overview with traffic, usage and time-range controls" width="100%"></a>
+      <p align="center"><strong>Administrator overview</strong><br>Service traffic, success, estimated cost, model usage, and period detail.</p>
+    </td>
+    <td width="33.33%" valign="top">
+      <a id="preview-accounts" href="docs/assets/ui-accounts.png"><img src="docs/assets/ui-accounts.png" alt="Account management page with account creation, roles, status, and controls" width="100%"></a>
+      <p align="center"><strong>Account management</strong><br>Provision accounts, set roles, disable access, reset passwords, or remove an account and its data.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="33.33%" valign="top">
+      <a id="preview-usage" href="docs/assets/ui-account-usage.png"><img src="docs/assets/ui-account-usage.png" alt="Member usage page with request totals, model usage, and cost summary" width="100%"></a>
+      <p align="center"><strong>Account-scoped usage</strong><br>Members see their own requests, model consumption, response time, and estimated cost.</p>
+    </td>
+    <td width="33.33%" valign="top">
+      <a id="preview-audit" href="docs/assets/ui-audit.png"><img src="docs/assets/ui-audit.png" alt="Filtered audit log with event details and CSV export controls" width="100%"></a>
+      <p align="center"><strong>Audit logs</strong><br>Filter operational events, inspect metadata, export matching rows, or delete entries.</p>
+    </td>
+    <td width="33.33%" valign="top">
+      <a id="preview-themes" href="docs/assets/ui-themes.png"><img src="docs/assets/ui-themes.png" alt="Theme selector showing light, dark, and system-following options" width="100%"></a>
+      <p align="center"><strong>Theme selection</strong><br>Nine named palettes, with an option to follow the operating system.</p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center" valign="top">
+      <a id="preview-language" href="docs/assets/ui-language.png"><img src="docs/assets/ui-language.png" alt="Language selector with English and Simplified Chinese options" width="33.33%"></a>
+      <p align="center"><strong>Language selection</strong><br>Choose English or Simplified Chinese, or use automatic browser-language detection.</p>
+    </td>
+  </tr>
+</table>
 
 ## Feature Guide
 
 <a id="conversation-to-image"></a>
-### Image Sessions and Requests
+### Sessions and Requests
 
-**Category:** Session-based creative workflow<br>
-**Best for:** Keeping requests, outputs, model feedback, and follow-up edits organized by session.
+**Purpose:** Keep prompts, outputs, model feedback, and follow-up work organized by session.
 
-**Overview:** Members describe an image in the studio and can optionally use the configured prompt model to refine the request. The conversation, generation status, returned feedback, and resulting image stay together in a session. The prompt model can be skipped for direct requests to the image API.
+Members can search sessions by title or message, rename, archive, restore, and permanently delete them. Conversation history loads in pages while preserving the reader's position. Each session can hold up to 12 pending requests; members can edit or remove queued items, or return one to the composer to change its options. The queue is persisted across service restarts.
 
-**Highlights:**
+The session shows user messages and uploaded images, request status, available model feedback, results, and failure details together. A first-turn prompt-model response can suggest a session title; returned image names are used for downloads when available. Users can stop an active request and retry failures.
 
-- Search, rename, archive, restore, or delete sessions. Conversation history can be paged without losing the current scroll position.
-- Queue up to 12 requests in a session. Edit a queued prompt, remove it, or return it to the composer to adjust its options. The queue persists across service restarts.
-- Expand the refined prompt and workflow summary to review model details and available provider feedback. Failed requests also retain available text feedback.
-- On a new session's first request, the prompt model may suggest a session title and a descriptive image name.
-- Review the resulting image, actual model and dimensions, available text feedback, and reported usage or estimated cost. Enlarge or download an image, or continue with it as an edit.
+**Screenshots:** [Image Studio](#preview-studio) · [Account-scoped usage](#preview-usage)
 
-**Preview:** [Image Studio screenshot](#preview-studio)
+### Prompt Model and Image Context
 
-<a id="image-guided-editing"></a>
-### Image Context and Canvas Controls
+The Prompt Model is optional on every request. When enabled, it turns a natural-language description into an English image prompt; administrators can edit its system instructions. When disabled, the user's text goes directly to the image API. The model is a prompt-preparation step, not a computer-control agent: it has no shell, filesystem, browser, plugin, or arbitrary URL-fetching tools.
 
-**Category:** Image-guided generation and editing<br>
-**Best for:** Making targeted changes to an existing image or using one as a visual reference.
+Attached images can be treated as an edit target or a visual reference. Users can choose a file, drag and drop, or paste an image; supported inputs are normalized to PNG before submission. With prompt refinement enabled, the attached image can be included in the prompt-model request. A follow-up can reuse the latest successful prompt-refined image and prompt context as an edit target; without prompt refinement, attach an image explicitly.
 
-**Overview:** Add an image and choose whether it is the edit target or a visual reference. These modes have different intent and are passed distinctly through prompt preparation and image-provider requests.
+Choose a model-decided, square, portrait, or landscape canvas size when the image workflow allows it. With a reference image, the output follows the input orientation. The session shows the actual output dimensions and available model feedback; images can be previewed in-app, downloaded, or used for a follow-up edit.
 
-**Highlights:**
-
-- Choose, drag, or paste an image. Browser-supported inputs are checked and normalized to PNG before submission.
-- When prompt refinement is enabled, an attached image can be included as multimodal input to the prompt provider and forwarded to the image provider.
-- A follow-up without a new image can reuse the latest successful prompt-refined turn's image as an edit target. When prompt refinement is skipped, attach the image explicitly.
-- Choose model-decided, square, portrait, or landscape sizing when the request allows it. The application records the actual returned dimensions.
-
-**Preview:** [Image Studio screenshot](#preview-studio)
+**Screenshot:** [Image Studio](#preview-studio)
 
 <a id="workspace-operations"></a>
-### Accounts, Providers, and Operations
+### Accounts and Data Separation
 
-**Category:** Self-hosted service administration<br>
-**Best for:** Operators who want to manage accounts and model providers from the same application.
+There is no public registration. Administrators create accounts, assign member or admin roles, enable or disable access, reset passwords, and delete accounts. A member's sessions, messages, queue items, images, and personal usage are isolated from other accounts. Deleting an account removes its associated workspace data.
 
-**Overview:** The administrator provisions accounts, configures prompt and image providers, and reviews service activity. Members see only their own sessions and usage. Public registration is not available.
+Members can inspect their own request counts, success rate, response time, model usage, and estimated cost. Administrators can inspect service-wide activity and account-level breakdowns.
 
-**Highlights:**
+**Screenshots:** [Account management](#preview-accounts) · [Account-scoped usage](#preview-usage)
 
-- Configure separate provider base URLs, credentials, model IDs, and usage prices. Fetch model IDs from a provider and select a returned option.
-- Edit the prompt model's system instructions; an empty custom value restores the bundled `AGENT.md` default.
-- Manage account roles, access status, and password resets. Account sessions and usage are isolated.
-- Review personal usage or administrator traffic by minute, hour, day, and month, with account and model breakdowns.
-- Filter, export, and delete audit-log entries. Logs do not contain raw API keys or full prompts; provider-setting events may include configured base URLs.
+### Provider Configuration
 
-**Previews:** [Operations overview](#preview-overview) · [Account management](#preview-accounts) · [Member usage](#preview-usage) · [Audit logs](#preview-audit)
+Administrators configure the Prompt Model and image API separately. Each can have its own compatible API base URL, credential, model ID, and usage pricing. The **Models & keys** page can fetch a provider's model list, let the administrator select an available ID, and test connectivity. The Prompt Model's system instructions are editable; an empty custom value restores the bundled `AGENT.md` instructions. Saved credentials and endpoint overrides are encrypted at rest.
+
+Model discovery only reports IDs returned by the provider; it does not guarantee that every listed model supports the image-generation contract the application needs. See [provider request requirements](#provider-configuration).
+
+### Operations and Audit
+
+The administrator overview reports requests, success rate, average response time, token usage, and estimated cost. Traffic can be grouped by minute, hour, day, or month, with account, model, request-mode, and failure breakdowns. Members see only their own usage page.
+
+Administrators can filter audit logs by account, event, and outcome; load older entries; export matching records as CSV; or delete entries. Logs omit raw API keys and full prompts, but provider-configuration events may include configured base URLs.
+
+**Screenshots:** [Operations overview](#preview-overview) · [Member usage](#preview-usage) · [Audit logs](#preview-audit)
 
 <a id="interface-preferences"></a>
-### Interface Preferences
+### Language and Themes
 
-Choose English or Simplified Chinese, with automatic browser-language detection by default. The interface offers nine named color themes and can follow the operating system's light/dark preference.
+The interface supports English and Simplified Chinese. Browser language is detected automatically by default; a manual choice is remembered locally. Nine named themes are available (four light and five dark), alongside a system-following option.
 
-**Previews:** [Theme selector](#preview-themes) · [Language selector](#preview-language)
+**Screenshots:** [Theme selector](#preview-themes) · [Language selector](#preview-language)
 
 ## Image Workflow
 
@@ -168,29 +160,6 @@ Choose English or Simplified Chinese, with automatic browser-language detection 
 6. The result, actual image dimensions, provider/model metadata, usage when reported, and generation status appear in the session. Failed requests retain the model's available text response for inspection.
 
 The prompt model is not a source of hidden tool access. The application does not give it a shell, filesystem, browser, plugin, or arbitrary URL-fetching tool.
-
-## Generated Examples
-
-The following examples were generated through a configured image API. They illustrate the output of the workflow; the full-width screenshots above show the application itself. Gallery images are optimized JPEG previews, and captions show the original generated PNG dimensions.
-
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <a id="preview-greenhouse" href="#image-workflow"><img src="docs/assets/greenhouse-over-clouds.jpg" alt="A glass botanical greenhouse floating above clouds at sunrise" width="100%"></a>
-      <p align="center"><strong>Skyborne Botanical Greenhouse</strong><br>3344 × 1882 · Generated image</p>
-    </td>
-    <td width="50%" valign="top">
-      <a id="preview-tokyo" href="#image-workflow"><img src="docs/assets/tokyo-vinyl-shop-rain.jpg" alt="A warmly lit Tokyo vinyl record shop on a rainy night" width="100%"></a>
-      <p align="center"><strong>Rainy Night Tokyo Record Shop</strong><br>2804 × 2244 · Generated image</p>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2" align="center" valign="top">
-      <a id="preview-lighthouse" href="#image-workflow"><img src="docs/assets/coastal-lighthouse-screen-print.jpg" alt="A vintage screen-print travel poster featuring a coastal lighthouse" width="50%"></a>
-      <p align="center"><strong>Coastal Lighthouse Screen Print</strong><br>2048 × 3072 · Model-selected portrait canvas</p>
-    </td>
-  </tr>
-</table>
 
 ## Architecture
 
@@ -377,3 +346,14 @@ For the full feature register and README editorial rationale, see [`docs/FEATURE
 - The current deployment template targets a single Node.js process with a local SQLite database and filesystem image storage. It is not a horizontally scaled or object-storage deployment.
 - Usage cost figures are estimates based on configured prices and provider-reported usage; a provider may omit token or cost data.
 - Provider terms, rate limits, model IDs, and Linux package availability are controlled by their respective maintainers and can change independently of this project.
+
+<a id="generated-examples"></a>
+<details>
+  <summary>View generated-image samples</summary>
+
+  These samples are secondary examples of the image workflow; the screenshots above focus on product features.
+
+  - [Skyborne Botanical Greenhouse](docs/assets/greenhouse-over-clouds.jpg) · 3344 × 1882
+  - [Rainy Night Tokyo Record Shop](docs/assets/tokyo-vinyl-shop-rain.jpg) · 2804 × 2244
+  - [Coastal Lighthouse Screen Print](docs/assets/coastal-lighthouse-screen-print.jpg) · 2048 × 3072
+</details>
